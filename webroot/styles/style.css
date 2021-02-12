@@ -1,0 +1,17 @@
+body {
+    background-color: grey;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#fortune {
+    background-color: lightgrey;
+    border-radius: 5px;
+    padding: 0.5em;
+    /* don't show this until we have data in it */
+    display: none;
+}
