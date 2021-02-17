@@ -8,7 +8,6 @@ window.addEventListener('load', () => {
     }
     
     let button = document.getElementById('mf');
-    //button.onclick = updateFortune;
     button.addEventListener('click', updateFortune)
     updateFortune()
 })
