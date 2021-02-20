@@ -1,4 +1,4 @@
-async function updateFortune(evt) {
+async function randomFortune() {
   try {
     let resp = await fetch('/api/fortune')
     if (!resp.ok) {
@@ -13,10 +13,18 @@ async function updateFortune(evt) {
   }
 }
 
+function action(evt){
+  if(evt.target.id === "random"){
+    randomFortune()
+  }
+}
+
 function setup() {
-  let button = document.getElementById('random')
-  button.addEventListener('click', updateFortune)
-  updateFortune()
+  const buttons = document.getElementsByTagName('button')
+  for (const button of buttons) {
+    button.addEventListener('click', action)
+  }
+  randomFortune()
 }
 
 window.addEventListener('load', setup)
