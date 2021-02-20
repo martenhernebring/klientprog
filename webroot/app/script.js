@@ -1,6 +1,19 @@
-async function randomFortune() {
+async function fortune(choice) {
   try {
-    let resp = await fetch('/api/fortune')
+    let resp
+    switch (choice) {
+      case 'short':
+        resp = await fetch('/api/short')
+        break
+      case 'shower':
+        resp = await fetch('/api/showerthought')
+        break
+      case 'tradition':
+        resp = await fetch('/api/traditional')
+        break
+      default:
+        resp = await fetch('/api/fortune')
+    }
     if (!resp.ok) {
       throw new Error(response.status)
     }
@@ -13,10 +26,8 @@ async function randomFortune() {
   }
 }
 
-function action(evt){
-  if(evt.target.id === "random"){
-    randomFortune()
-  }
+function action(evt) {
+  fortune(evt.target.id)
 }
 
 function setup() {
@@ -24,7 +35,7 @@ function setup() {
   for (const button of buttons) {
     button.addEventListener('click', action)
   }
-  randomFortune()
+  fortune()
 }
 
 window.addEventListener('load', setup)
