@@ -1,17 +1,99 @@
 body {
-    background-color: grey;
+  background-color: grey;
+  font-size: 50%;
 }
 
-.center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  font-size: 1em;
+  margin-top: 0.25em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  padding-top: 0.25em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 0.25em;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #fortune {
-    background-color: lightgrey;
-    border-radius: 5px;
-    padding: 0.5em;
-    /* don't show this until we have data in it */
-    visibility: hidden;
+  background-color: lightgrey;
+  border-radius: 5px;
+  padding: 0.5em;
+  /* don't show this until we have data in it */
+  visibility: hidden;
+}
+
+@media screen and (min-width: 400px) {
+  body {
+    background-color: blue;
+    font-size: 70%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    background-color: red;
+    font-size: 100%;
+  }
+
+  button {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    background-color: green;
+    font-size: 130%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  body {
+    background-color: pink;
+    font-size: 160%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    background-color: orange;
+    font-size: 200%;
+  }
+
+  button {
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  body {
+    background-color: purple;
+    font-size: 230%;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  body {
+    background-color: yellow;
+    font-size: 400%;
+  }
+
+  button {
+    margin-left: 2em;
+    margin-right: 2em;
+  }
 }
