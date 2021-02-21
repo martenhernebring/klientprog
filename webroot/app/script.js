@@ -1,27 +1,9 @@
 let index = 0
-let main = document.getElementById('main')
 
-async function fortune(choice) {
+async function fortune(api) {
+  const main = document.getElementById('main')
   try {
-    let resp
-    switch (choice) {
-      case 'short':
-        index++
-        resp = await fetch('/api/short')
-        break
-      case 'shower':
-        index++
-        resp = await fetch('/api/showerthought')
-        break
-      case 'tradition':
-        index++
-        resp = await fetch('/api/traditional')
-        break
-      case 'random':
-        index++
-      default:
-        resp = await fetch('/api/fortune')
-    }
+    let resp = await fetch(api)
     if (!resp.ok) {
       throw new Error(response.status)
     }
@@ -31,11 +13,14 @@ async function fortune(choice) {
       first.innerText = json.fortune
       first.style.visibility = 'visible'
     } else {
-      let pre = document.createElement('pre')
-      pre.className = 'fortune'
-      let fortuneText = document.createTextNode(json.fortune)
-      pre.appendChild(fortuneText) 
-      main.appendChild(pre)
+      let next = document.createElement('pre')
+      next.className = 'fortune'
+      let text = document.createTextNode(json.fortune)
+      next.appendChild(text)
+      main.insertBefore(next, main.childNodes[0])
+      if (index < 10) {
+        //TODO
+      }
     }
     console.log(String(index))
   } catch (error) {
@@ -44,15 +29,27 @@ async function fortune(choice) {
 }
 
 function action(evt) {
-  fortune(evt.target.id)
+  let id = evt.target.id
+  index++
+  switch (id) {
+    case 'short':
+      fortune('/api/short')
+      break
+    case 'shower':
+      fortune('/api/showerthought')
+      break
+    case 'tradition':
+      fortune('/api/traditional')
+      break
+    default:
+      fortune('/api/fortune')
+  }
 }
 
-function setup() {
+window.addEventListener('load', () => {
   const buttons = document.getElementsByTagName('button')
   for (const button of buttons) {
     button.addEventListener('click', action)
   }
-  fortune()
-}
-
-window.addEventListener('load', setup)
+  fortune('/api/fortune')
+})
