@@ -11,6 +11,7 @@ async function fortune(api) {
       let first = document.getElementById('first')
       first.innerText = json.fortune
       first.style.visibility = 'visible'
+      index++
     } else {
       let next = document.createElement('pre')
       next.className = 'fortune'
@@ -20,6 +21,8 @@ async function fortune(api) {
         main.removeChild(main.lastElementChild);
       }
       main.insertBefore(next, main.childNodes[0])
+      console.log(String(json))
+      index++
     }
   } catch (error) {
     console.error(error)
@@ -27,8 +30,12 @@ async function fortune(api) {
 }
 
 function action(evt) { 
-  index++
   switch (evt.target.id) {
+    case 'query':
+      if(evt.key === 'Enter'){
+        fortune('api/query?q='+ evt.target.value)
+      }
+      break
     case 'short':
       fortune('api/short')
       break
@@ -49,6 +56,6 @@ window.addEventListener('load', () => {
     button.addEventListener('click', action)
   }
   const search = document.getElementById('query')
-  //search.addEventListener('input', fortune())
+  search.addEventListener('keypress', action)
   fortune('api/fortune')
 })
