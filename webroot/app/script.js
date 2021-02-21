@@ -16,11 +16,10 @@ async function fortune(api) {
       next.className = 'fortune'
       next.appendChild(document.createTextNode(json.fortune))
       const main = document.getElementById('main')
-      let nodes = main.childNodes
       if (index > 9) {
         main.removeChild(main.lastElementChild);
       }
-      main.insertBefore(next, nodes[0])
+      main.insertBefore(next, main.childNodes[0])
     }
   } catch (error) {
     console.error(error)
