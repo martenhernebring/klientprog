@@ -1,7 +1,6 @@
 let index = 0
 
 async function fortune(api) {
-  const main = document.getElementById('main')
   try {
     let resp = await fetch(api)
     if (!resp.ok) {
@@ -15,23 +14,22 @@ async function fortune(api) {
     } else {
       let next = document.createElement('pre')
       next.className = 'fortune'
-      let text = document.createTextNode(json.fortune)
-      next.appendChild(text)
-      main.insertBefore(next, main.childNodes[0])
-      if (index < 10) {
-        //TODO
+      next.appendChild(document.createTextNode(json.fortune))
+      const main = document.getElementById('main')
+      let nodes = main.childNodes
+      if (index > 9) {
+        main.removeChild(main.lastElementChild);
       }
+      main.insertBefore(next, nodes[0])
     }
-    console.log(String(index))
   } catch (error) {
     console.error(error)
   }
 }
 
-function action(evt) {
-  let id = evt.target.id
+function action(evt) { 
   index++
-  switch (id) {
+  switch (evt.target.id) {
     case 'short':
       fortune('/api/short')
       break
