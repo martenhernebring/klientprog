@@ -12,28 +12,39 @@ async function fortune(api) {
       first.innerText = json.fortune
       first.style.visibility = 'visible'
       index++
-    } else {
+    } else if (!Array.isArray(json)) {
       let next = document.createElement('pre')
       next.className = 'fortune'
       next.appendChild(document.createTextNode(json.fortune))
       const main = document.getElementById('main')
       if (index > 9) {
-        main.removeChild(main.lastElementChild);
+        main.removeChild(main.lastElementChild)
       }
       main.insertBefore(next, main.childNodes[0])
-      console.log(String(json))
       index++
+    } else {
+      for (const single of json) {
+        let next = document.createElement('pre')
+        next.className = 'fortune'
+        next.appendChild(document.createTextNode(single.fortune))
+        const main = document.getElementById('main')
+        if (index > 9) {
+          main.removeChild(main.lastElementChild)
+        }
+        main.insertBefore(next, main.childNodes[0])
+        index++
+      }
     }
   } catch (error) {
     console.error(error)
   }
 }
 
-function action(evt) { 
+function action(evt) {
   switch (evt.target.id) {
     case 'query':
-      if(evt.key === 'Enter'){
-        fortune('api/query?q='+ evt.target.value)
+      if (evt.key === 'Enter') {
+        fortune('api/query?q=' + evt.target.value)
       }
       break
     case 'short':
