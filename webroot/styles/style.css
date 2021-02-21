@@ -13,7 +13,7 @@ main {
   flex-direction: column;
 }
 
-button {
+input, button {
   font-size: 1em;
   margin-top: 0.25em;
   margin-left: 0.5em;
@@ -22,6 +22,10 @@ button {
   padding-left: 1em;
   padding-right: 1em;
   padding-bottom: 0.25em;
+}
+
+input {
+  width: 8em;
 }
 
 .fortune {
@@ -41,6 +45,10 @@ button {
 @media screen and (min-width: 300px) {
   .fortune{
     overflow: visible;
+    width: 44em;
+  }
+  input {
+    width: 12em;
   }
 }
 
@@ -48,9 +56,6 @@ button {
 @media screen and (min-width: 400px) {
   body {
     font-size: 70%;
-  }
-  .fortune{
-    width: 44em;
   }
 }
 

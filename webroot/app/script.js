@@ -30,16 +30,16 @@ function action(evt) {
   index++
   switch (evt.target.id) {
     case 'short':
-      fortune('/api/short')
+      fortune('api/short')
       break
     case 'shower':
-      fortune('/api/showerthought')
+      fortune('api/showerthought')
       break
     case 'tradition':
-      fortune('/api/traditional')
+      fortune('api/traditional')
       break
     default:
-      fortune('/api/fortune')
+      fortune('api/fortune')
   }
 }
 
@@ -48,5 +48,7 @@ window.addEventListener('load', () => {
   for (const button of buttons) {
     button.addEventListener('click', action)
   }
-  fortune('/api/fortune')
+  const search = document.getElementById('query')
+  //search.addEventListener('input', fortune())
+  fortune('api/fortune')
 })
