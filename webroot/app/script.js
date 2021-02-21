@@ -1,5 +1,17 @@
 let index = 0
 
+function addLatest(single) {
+  let next = document.createElement('pre')
+  next.className = 'fortune'
+  next.appendChild(document.createTextNode(single.fortune))
+  const main = document.getElementById('main')
+  if (index > 9) {
+    main.removeChild(main.lastElementChild)
+  }
+  main.insertBefore(next, main.childNodes[0])
+  index++
+}
+
 async function fortune(api) {
   try {
     let resp = await fetch(api)
@@ -13,26 +25,10 @@ async function fortune(api) {
       first.style.visibility = 'visible'
       index++
     } else if (!Array.isArray(json)) {
-      let next = document.createElement('pre')
-      next.className = 'fortune'
-      next.appendChild(document.createTextNode(json.fortune))
-      const main = document.getElementById('main')
-      if (index > 9) {
-        main.removeChild(main.lastElementChild)
-      }
-      main.insertBefore(next, main.childNodes[0])
-      index++
+      addLatest(json)
     } else {
       for (const single of json) {
-        let next = document.createElement('pre')
-        next.className = 'fortune'
-        next.appendChild(document.createTextNode(single.fortune))
-        const main = document.getElementById('main')
-        if (index > 9) {
-          main.removeChild(main.lastElementChild)
-        }
-        main.insertBefore(next, main.childNodes[0])
-        index++
+        addLatest(single)
       }
     }
   } catch (error) {
