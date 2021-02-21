@@ -8,7 +8,7 @@ async function fortune(api) {
     }
     let json = await resp.json()
     if (index === 0) {
-      let first = document.getElementById('hidden')
+      let first = document.getElementById('show_on_load')
       first.innerText = json.fortune
       first.style.visibility = 'visible'
     } else {
