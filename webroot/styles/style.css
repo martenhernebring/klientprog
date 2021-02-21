@@ -1,12 +1,16 @@
 body {
-  background-color: grey;
+  background-color: orange;
   font-size: 50%;
 }
 
-nav {
+.cflex {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+main {
+  flex-direction: column;
 }
 
 button {
@@ -20,28 +24,29 @@ button {
   padding-bottom: 0.25em;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .fortune {
   background-color: lightgrey;
   border-radius: 5px;
   padding: 0.5em;
-  width: 45em;
+  width: 38em;
+  overflow: scroll;
 }
 
-#show_on_load {
+#first {
+  /*wait for json server in .js*/
   visibility: hidden;
 }
 
-/*Medium size mobile devices*/
+/*Small mobile devices*/
+@media screen and (min-width: 300px) {
+  .fortune{
+    overflow: visible;
+  }
+}
+
+/*Large mobile devices*/
 @media screen and (min-width: 400px) {
   body {
-    background-color: blue;
     font-size: 70%;
   }
   .fortune{
@@ -52,7 +57,6 @@ main {
 /*iPads, Tablets.*/
 @media screen and (min-width: 600px) {
   body {
-    background-color: red;
     font-size: 100%;
   }
 
@@ -65,7 +69,6 @@ main {
 /*Small screens, laptops.*/
 @media screen and (min-width: 800px) {
   body {
-    background-color: green;
     font-size: 130%;
   }
 }
@@ -73,7 +76,6 @@ main {
 /*Desktops, large screens.*/
 @media screen and (min-width: 1000px) {
   body {
-    background-color: pink;
     font-size: 160%;
   }
 }
@@ -81,7 +83,6 @@ main {
 /*Extra large screens, TV*/
 @media screen and (min-width: 1200px) {
   body {
-    background-color: orange;
     font-size: 200%;
   }
 
@@ -93,14 +94,12 @@ main {
 
 @media screen and (min-width: 1400px) {
   body {
-    background-color: purple;
     font-size: 230%;
   }
 }
 
 @media screen and (min-width: 2000px) {
   body {
-    background-color: yellow;
     font-size: 400%;
   }
 

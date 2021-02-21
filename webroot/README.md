@@ -37,7 +37,7 @@ Has 4 navigation buttons and one hidden pre to be showned after loading website
 
 ## style.css file
 Has styles for the elements (body, nav, button and main), class fortune and id hidden.
-The font-size, width and button margins is adjusted to show well for all screens.
+The text overflow, font-size, width and button margins fits for all screens.
 
 ## script.js file
 Has a variable index that keep tracks on the number of fortunes.
